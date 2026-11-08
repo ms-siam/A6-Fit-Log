@@ -4,7 +4,6 @@ import ExerciseCard from '../shared/ExerciseCard';
 
 
 const getExerciseCard = async () => {
-    // 'use cache'
     try {
         const response = await fetch('https://api.abcz.workers.dev/api/fitlog/');
         const data = await response.json();
