@@ -7,14 +7,21 @@ import { AiOutlineFire } from 'react-icons/ai';
 import { CiStar } from 'react-icons/ci';
 import { usePlan } from '@/context/PlanContext';
 import { ExerciseCardType } from '@/types/exercise.type';
-import SortDropdown from './SortDropdown';
+import SortDropdown, { SortOption } from './SortDropdown';
 
 const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
     const { planIds, saveIds, removeFromPlan, removeFromSaved } = usePlan()
     const [tab, setTab] = useState<'plan' | 'saved'>('plan')
+    const [sortBy, setSortBy] = useState<SortOption>('Duration')
     const planned = ExerciseData.filter((exercise) => planIds.includes(exercise.id))
     const saved = ExerciseData.filter((exercise) => saveIds.includes(exercise.id))
     const list = tab === 'plan' ? planned : saved
+
+    const sortedList = [...list].sort((a, b) => {
+        if (sortBy === 'Calories') return b.caloriesBurned - a.caloriesBurned
+        if (sortBy === 'Rating') return b.rating - a.rating
+        return b.duration - a.duration
+    })
 
     return (
         <div className="mt-8 flex flex-col gap-8">
@@ -57,12 +64,12 @@ const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
                     </button>
                 </div>
 
-                <SortDropdown />
+                <SortDropdown value={sortBy} onChange={setSortBy} />
             </div>
 
-            {list.length > 0 ? (
+            {sortedList.length > 0 ? (
                 <div className="flex flex-col gap-4">
-                    {list.map((exercise) => (
+                    {sortedList.map((exercise) => (
                         <div
                             key={exercise.id}
                             className="flex flex-col gap-4 rounded-3xl border border-gray-800 bg-[#1a1a1c] p-5 md:flex-row md:items-center"
