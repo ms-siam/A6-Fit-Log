@@ -10,27 +10,29 @@ import { ExerciseCardType } from '@/types/exercise.type';
 import SortDropdown from './SortDropdown';
 
 const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
-    const { planIds } = usePlan()
+    const { planIds, saveIds, removeFromPlan, removeFromSaved } = usePlan()
     const [tab, setTab] = useState<'plan' | 'saved'>('plan')
     const planned = ExerciseData.filter((exercise) => planIds.includes(exercise.id))
+    const saved = ExerciseData.filter((exercise) => saveIds.includes(exercise.id))
+    const list = tab === 'plan' ? planned : saved
 
     return (
         <div className="mt-8 flex flex-col gap-8">
             <div className="grid grid-cols-3 divide-x divide-dashed divide-gray-800 overflow-hidden rounded-3xl border border-gray-800 bg-[#1a1a1c]">
                 <div className="p-4 md:p-8">
                     <p className="text-gray-400">Exercises</p>
-                    <strong className="text-4xl font-bold text-[#C4F000] md:text-5xl">{planned.length}</strong>
+                    <strong className="text-4xl font-bold text-[#C4F000] md:text-5xl">{list.length}</strong>
                 </div>
                 <div className="p-4 md:p-8">
                     <p className="text-gray-400">Minutes</p>
                     <strong className="text-4xl font-bold text-white md:text-5xl">
-                        {planned.reduce((total, exercise) => total + exercise.duration, 0)}
+                        {list.reduce((total, exercise) => total + exercise.duration, 0)}
                     </strong>
                 </div>
                 <div className="p-4 md:p-8">
                     <p className="text-gray-400">Calories</p>
                     <strong className="text-4xl font-bold text-white md:text-5xl">
-                        {planned.reduce((total, exercise) => total + exercise.caloriesBurned, 0)}
+                        {list.reduce((total, exercise) => total + exercise.caloriesBurned, 0)}
                     </strong>
                 </div>
             </div>
@@ -58,9 +60,9 @@ const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
                 <SortDropdown />
             </div>
 
-            {tab === 'plan' && planned.length > 0 ? (
+            {list.length > 0 ? (
                 <div className="flex flex-col gap-4">
-                    {planned.map((exercise) => (
+                    {list.map((exercise) => (
                         <div
                             key={exercise.id}
                             className="flex flex-col gap-4 rounded-3xl border border-gray-800 bg-[#1a1a1c] p-5 md:flex-row md:items-center"
@@ -100,11 +102,26 @@ const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
                                 >
                                     View Details
                                 </Link>
-                                <button className="flex items-center gap-2 rounded-full bg-[#C4F000] px-5 py-2 font-medium text-black">
-                                    <RxCheck />
-                                    Mark as Done
-                                </button>
-                                <button className="p-2 text-white" aria-label="Remove">
+
+                                {tab === 'plan' && (
+                                    <button
+                                        onClick={() => removeFromPlan(exercise.id)}
+                                        className="flex items-center gap-2 rounded-full bg-[#C4F000] px-5 py-2 font-medium text-black"
+                                    >
+                                        <RxCheck />
+                                        Mark as Done
+                                    </button>
+                                )}
+
+                                <button
+                                    onClick={() =>
+                                        tab === 'plan'
+                                            ? removeFromPlan(exercise.id)
+                                            : removeFromSaved(exercise.id)
+                                    }
+                                    className="p-2 text-white"
+                                    aria-label="Remove"
+                                >
                                     <RxCross2 />
                                 </button>
                             </div>
