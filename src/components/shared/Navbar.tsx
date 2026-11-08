@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 import NavLinks from './NavLinks';
 
 const Navbar = () => {
-    const { planIds } = usePlan()
+    const { planIds, saveIds } = usePlan()
 
     return (
         <nav className='sticky top-0 z-50 border-b border-gray-800 bg-[#101216]'>
@@ -46,7 +46,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-2 font-bold text-white">
                         Saved
                         <span className="rounded-full border border-white px-2.5 py-0.5 text-sm">
-                            0
+                            {saveIds.length}
                         </span>
                     </div>
                 </div>
