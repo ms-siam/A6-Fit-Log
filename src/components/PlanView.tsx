@@ -1,11 +1,15 @@
+'use client'
+import { usePlan } from '@/context/PlanContext';
+import { ExerciseCardType } from '@/types/exercise.type';
 import Link from 'next/link';
-import React from 'react';
 
-const PlanView = () => {
+const PlanView = ({ ExerciseData }:{ExerciseData:ExerciseCardType[]}) => {
+    const {planIds} = usePlan()
+    const planned = ExerciseData.filter((exercise) => planIds.includes(exercise.id))
     return (
         <>
             <div>
-                <div>Exercises <strong>0</strong></div>
+                <div>Exercises <strong>{planned.length}</strong></div>
                 <div>Minutes <strong>0</strong></div>
                 <div>Calories <strong>0</strong></div>
             </div>
@@ -25,6 +29,7 @@ const PlanView = () => {
             </label>
 
             <div>
+                
                 <h2>Nothing here yet</h2>
                 <Link href="/">Go to workouts</Link>
             </div>

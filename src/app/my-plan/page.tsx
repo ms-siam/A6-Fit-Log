@@ -2,6 +2,7 @@ import PlanView from '@/components/PlanView';
 import React from 'react';
 
 const getExerciseData = async () => {
+    'use cache'
     try {
         const response = await fetch('https://api.abcz.workers.dev/api/fitlog/');
         const data = await response.json();
