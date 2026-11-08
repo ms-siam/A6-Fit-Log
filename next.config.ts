@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
+  }
 };
 
 export default nextConfig;
