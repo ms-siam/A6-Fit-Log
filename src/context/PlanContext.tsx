@@ -3,16 +3,16 @@
 import { createContext, useContext, useState } from "react"
 
 type PlanContextValue = {
-    planIds: string[],
-    addToPlan: (id:string)=>void
+    planIds: number[],
+    addToPlan: (id:number)=>void
 }
 
 const PlanContext = createContext<PlanContextValue | null>(null);
 
 export function PlanProvider({children}:{children:React.ReactNode}){
-    const [planIds, setPlanIds] = useState<string[]>([])
+    const [planIds, setPlanIds] = useState<number[]>([])
 
-    function addToPlan(id:string){
+    function addToPlan(id:number){
         setPlanIds([...planIds, id])
     }
 
