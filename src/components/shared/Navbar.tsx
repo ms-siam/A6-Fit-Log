@@ -19,7 +19,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex'>
                     <Image src={logo} alt='logo' className='rotate-90 h-10 w-8'/>
-                    <a className="btn btn-ghost text-xl">FITLOG</a>
+                    <a className="btn btn-ghost text-3xl">FITLOG</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
