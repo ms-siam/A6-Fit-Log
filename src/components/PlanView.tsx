@@ -7,6 +7,7 @@ import { AiOutlineFire } from 'react-icons/ai';
 import { CiStar } from 'react-icons/ci';
 import { usePlan } from '@/context/PlanContext';
 import { ExerciseCardType } from '@/types/exercise.type';
+import SortDropdown from './SortDropdown';
 
 const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
     const { planIds } = usePlan()
@@ -54,14 +55,7 @@ const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
                     </button>
                 </div>
 
-                <label className="flex flex-col gap-2 text-lg text-white">
-                    Sort By
-                    <select className="rounded-full border border-gray-700 bg-transparent px-5 py-3 text-base text-white md:w-80">
-                        <option className="bg-[#1a1a1c]">Duration</option>
-                        <option className="bg-[#1a1a1c]">Calories</option>
-                        <option className="bg-[#1a1a1c]">Rating</option>
-                    </select>
-                </label>
+                <SortDropdown />
             </div>
 
             {tab === 'plan' && planned.length > 0 ? (
