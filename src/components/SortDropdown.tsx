@@ -2,11 +2,18 @@
 import { useState } from 'react';
 import { RxCheck, RxTriangleDown, RxTriangleUp } from 'react-icons/rx';
 
-const options = ['Duration', 'Calories', 'Rating']
+export type SortOption = 'Duration' | 'Calories' | 'Rating'
 
-const SortDropdown = () => {
+const options: SortOption[] = ['Duration', 'Calories', 'Rating']
+
+const SortDropdown = ({
+    value,
+    onChange,
+}: {
+    value: SortOption
+    onChange: (option: SortOption) => void
+}) => {
     const [open, setOpen] = useState(false)
-    const [selected, setSelected] = useState('Duration')
 
     return (
         <div className="relative flex flex-col gap-2 md:w-80">
@@ -18,7 +25,7 @@ const SortDropdown = () => {
                     open ? 'border-white ring-2 ring-white/60' : 'border-gray-700'
                 }`}
             >
-                {selected}
+                {value}
                 {open ? <RxTriangleUp /> : <RxTriangleDown />}
             </button>
 
@@ -30,13 +37,13 @@ const SortDropdown = () => {
                             <li key={option}>
                                 <button
                                     onClick={() => {
-                                        setSelected(option)
+                                        onChange(option)
                                         setOpen(false)
                                     }}
                                     className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-white hover:bg-[#1a1a1c]"
                                 >
                                     <span className="w-4">
-                                        {selected === option && <RxCheck />}
+                                        {value === option && <RxCheck />}
                                     </span>
                                     {option}
                                 </button>
