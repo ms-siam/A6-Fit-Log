@@ -43,12 +43,12 @@ const Navbar = () => {
                             {planIds.length}
                         </span>
                     </Link>
-                    <div className="flex items-center gap-2 font-bold text-white">
+                    <Link href={"/my-plan"} className="flex items-center gap-2 font-bold text-white">
                         Saved
                         <span className="rounded-full border border-white px-2.5 py-0.5 text-sm">
                             {saveIds.length}
                         </span>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </nav>
