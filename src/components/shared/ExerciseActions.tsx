@@ -2,8 +2,10 @@
 
 import { usePlan } from "@/context/PlanContext";
 
-const ExerciseActions = ({ id }: { id: number }) => {
 
+
+const ExerciseActions = ({ id }: { id: number }) => {
+    
     const { addToPlan } = usePlan()
     return (
         <>
