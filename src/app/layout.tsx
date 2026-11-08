@@ -2,6 +2,7 @@
 import Navbar from "@/components/shared/Navbar";
 import "./globals.css";
 import Footer from "@/components/shared/Footer";
+import { PlanProvider } from "@/context/PlanContext";
 
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -11,10 +12,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme='dark'
     >
       <body className="min-h-full flex flex-col">
-        <Navbar></Navbar>
-        {children}
-        <Footer></Footer>
-        </body>
+        <PlanProvider>
+          <Navbar></Navbar>
+          {children}
+          <Footer></Footer>
+        </PlanProvider>
+      </body>
     </html>
   );
 }
