@@ -2,12 +2,12 @@
 import Image from 'next/image';
 import logo from '@/assets/logo.png'
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { usePlan } from '@/context/PlanContext';
+import { Suspense } from 'react';
+import NavLinks from './NavLinks';
 
 const Navbar = () => {
     const { planIds } = usePlan()
-    const pathname = usePathname()
 
     return (
         <nav className='sticky top-0 z-50 border-b border-gray-800 bg-[#101216]'>
@@ -25,28 +25,15 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link href={"/"} className='flex items-center gap-2'>
-                        <Image src={logo} alt='logo' className='rotate-90 h-10 w-8'/>
+                        <Image src={logo} alt='logo' className='rotate-90 h-10 w-8' />
                         <span className="text-3xl font-medium uppercase text-white">FITLOG</span>
                     </Link>
                 </div>
 
                 <div className="hidden items-center gap-1 lg:flex">
-                    <Link
-                        href={"/"}
-                        className={`rounded-xl px-4 py-2 text-lg ${
-                            pathname === "/" ? "bg-[#1a1a1c] text-[#C4F000]" : "text-white"
-                        }`}
-                    >
-                        Workouts
-                    </Link>
-                    <Link
-                        href={"/my-plan"}
-                        className={`rounded-xl px-4 py-2 text-lg ${
-                            pathname === "/my-plan" ? "bg-[#1a1a1c] text-[#C4F000]" : "text-white"
-                        }`}
-                    >
-                        My Plan
-                    </Link>
+                    <Suspense fallback={null}>
+                        <NavLinks />
+                    </Suspense>
                 </div>
 
                 <div className="flex items-center gap-6">
