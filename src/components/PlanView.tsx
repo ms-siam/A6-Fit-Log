@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 import { RxTimer, RxCross2, RxCheck } from 'react-icons/rx';
 import { AiOutlineFire } from 'react-icons/ai';
 import { CiStar } from 'react-icons/ci';
@@ -22,6 +23,21 @@ const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
         if (sortBy === 'Rating') return b.rating - a.rating
         return b.duration - a.duration
     })
+
+    const handleDone = (id: number) => {
+        removeFromPlan(id)
+        toast.success("Marked as done")
+    }
+
+    const handleRemove = (id: number) => {
+        if (tab === 'plan') {
+            removeFromPlan(id)
+            toast.success("Removed from plan")
+        } else {
+            removeFromSaved(id)
+            toast.success("Removed from saved")
+        }
+    }
 
     return (
         <div className="mt-8 flex flex-col gap-8">
@@ -112,7 +128,7 @@ const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
 
                                 {tab === 'plan' && (
                                     <button
-                                        onClick={() => removeFromPlan(exercise.id)}
+                                        onClick={() => handleDone(exercise.id)}
                                         className="flex items-center gap-2 rounded-full bg-[#C4F000] px-5 py-2 font-medium text-black"
                                     >
                                         <RxCheck />
@@ -121,11 +137,7 @@ const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
                                 )}
 
                                 <button
-                                    onClick={() =>
-                                        tab === 'plan'
-                                            ? removeFromPlan(exercise.id)
-                                            : removeFromSaved(exercise.id)
-                                    }
+                                    onClick={() => handleRemove(exercise.id)}
                                     className="p-2 text-white"
                                     aria-label="Remove"
                                 >
