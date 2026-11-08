@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ExerciseCardType } from "@/types/exercise.type";
+import ExerciseActions from "@/components/shared/ExerciseActions";
 
 const getExercises = async () => {
   try {
@@ -100,12 +101,7 @@ async function ExerciseDetails({
         </div>
 
         <div className="flex gap-4">
-          <button className="rounded-full bg-[#C4F000] px-6 py-3 font-bold text-black">
-            Add to today&apos;s plan
-          </button>
-          <button className="rounded-full border border-white px-6 py-3 font-bold text-white">
-            Save for later
-          </button>
+          <ExerciseActions id={exercise.id}></ExerciseActions>
         </div>
       </div>
     </div>

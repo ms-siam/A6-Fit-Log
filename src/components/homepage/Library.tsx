@@ -18,7 +18,6 @@ const getExerciseCard = async () => {
 const Library = async () => {
 
     const ExerciseData = await getExerciseCard()
-    console.log(ExerciseData.length)
     return (
         <div className='container mx-auto'>
             <h2 className='font-bold text-4xl my-5'>THE LIBRARY</h2>
