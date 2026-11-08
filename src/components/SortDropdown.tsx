@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react';
-import { RxCheck, RxTriangleDown, RxTriangleUp } from 'react-icons/rx';
-
+import { RxCheck, RxChevronDown, RxChevronUp } from 'react-icons/rx';
 export type SortOption = 'Duration' | 'Calories' | 'Rating'
 
 const options: SortOption[] = ['Duration', 'Calories', 'Rating']
@@ -26,7 +25,7 @@ const SortDropdown = ({
                 }`}
             >
                 {value}
-                {open ? <RxTriangleUp /> : <RxTriangleDown />}
+                {open ? <RxChevronUp /> : <RxChevronDown />}
             </button>
 
             {open && (

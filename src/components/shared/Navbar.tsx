@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
         <nav className='sticky top-0 z-50 border-b border-gray-800 bg-[#101216]'>
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+            <div className="mx-auto flex container items-center justify-between px-4 py-3">
                 <div className="flex items-center gap-2">
                     <div className="dropdown lg:hidden">
                         <div tabIndex={0} role="button" className="cursor-pointer p-2 text-white">

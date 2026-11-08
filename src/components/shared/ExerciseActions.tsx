@@ -11,6 +11,10 @@ const ExerciseActions = ({ id }: { id: number }) => {
             toast.error("Already in your plan")
             return
         }
+        if (planIds.length >= 5) {
+            toast.error("Plan is full (5 lifts max)")
+            return
+        }
         addToPlan(id)
         toast.success("Added to today's plan")
     }
