@@ -4,7 +4,7 @@ import logo from '@/assets/logo.png'
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 shadow-sm container mx-auto top-0 sticky z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -17,8 +17,8 @@ const Navbar = () => {
                         <li><a>My Plan</a></li>
                     </ul>
                 </div>
-                <div>
-                    <Image src={logo} alt='logo'/>
+                <div className='flex'>
+                    <Image src={logo} alt='logo' className='rotate-90 h-10 w-8'/>
                     <a className="btn btn-ghost text-xl">FITLOG</a>
                 </div>
             </div>
@@ -29,8 +29,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
-                <a className="btn">Button</a>
+                <a className="btn">Plan 0</a>
+                <a className="btn">Saved 0</a>
             </div>
         </div>
     );
