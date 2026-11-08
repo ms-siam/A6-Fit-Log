@@ -3,8 +3,8 @@ import { usePlan } from '@/context/PlanContext';
 import { ExerciseCardType } from '@/types/exercise.type';
 import Link from 'next/link';
 
-const PlanView = ({ ExerciseData }:{ExerciseData:ExerciseCardType[]}) => {
-    const {planIds} = usePlan()
+const PlanView = ({ ExerciseData }: { ExerciseData: ExerciseCardType[] }) => {
+    const { planIds } = usePlan()
     const planned = ExerciseData.filter((exercise) => planIds.includes(exercise.id))
     return (
         <>
@@ -15,7 +15,7 @@ const PlanView = ({ ExerciseData }:{ExerciseData:ExerciseCardType[]}) => {
             </div>
 
             <div>
-                <button>Today&apos;s Plan</button>
+                <button></button>
                 <button>Saved</button>
             </div>
 
@@ -29,7 +29,7 @@ const PlanView = ({ ExerciseData }:{ExerciseData:ExerciseCardType[]}) => {
             </label>
 
             <div>
-                
+
                 <h2>Nothing here yet</h2>
                 <Link href="/">Go to workouts</Link>
             </div>
