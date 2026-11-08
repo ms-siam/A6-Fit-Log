@@ -4,7 +4,8 @@ import logo from '@/assets/logo.png'
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100 shadow-sm container mx-auto border border-gray-700 top-0 sticky z-50">
+        <nav className='border-b border-gray-700'>
+            <div className="navbar bg-base-100 shadow-sm container mx-auto top-0 sticky z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,6 +34,7 @@ const Navbar = () => {
                 <a className="btn">Saved 0</a>
             </div>
         </div>
+        </nav>
     );
 };
 
