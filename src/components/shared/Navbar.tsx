@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import logo from '@/assets/logo.png'
+import Link from 'next/link';
 
 const Navbar = () => {
     return (
@@ -14,8 +15,8 @@ const Navbar = () => {
                     <ul
                         tabIndex={-1}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><a>Workout</a></li>
-                        <li><a>My Plan</a></li>
+                        <Link href={"/"}>WorkOut</Link>
+                        <Link href={"/my-plan"}>My Plan</Link>
                     </ul>
                 </div>
                 <div className='flex'>
@@ -25,12 +26,12 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Workout</a></li>
-                    <li><a>My Plan</a></li>
+                    <Link href={"/"}>WorkOut</Link>
+                    <Link href={"/my-plan"}>My Plan</Link>
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Plan 0</a>
+                <Link href={"/my-plan"}className="btn">Plan 0</Link>
                 <a className="btn">Saved 0</a>
             </div>
         </div>
