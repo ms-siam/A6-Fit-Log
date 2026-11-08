@@ -1,9 +1,14 @@
+'use client'
 import Image from 'next/image';
 import React from 'react';
 import logo from '@/assets/logo.png'
 import Link from 'next/link';
+import { usePlan } from '@/context/PlanContext';
+
+
 
 const Navbar = () => {
+    const {planIds} = usePlan()
     return (
         <nav className='border-b border-gray-700'>
             <div className="navbar bg-base-100 shadow-sm container mx-auto top-0 sticky z-50">
@@ -31,7 +36,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link href={"/my-plan"}className="btn">Plan 0</Link>
+                <Link href={"/my-plan"}className="btn">Plan <span>{planIds.length}</span></Link>
                 <a className="btn">Saved 0</a>
             </div>
         </div>
