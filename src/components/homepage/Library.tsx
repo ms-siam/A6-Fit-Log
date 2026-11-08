@@ -19,7 +19,7 @@ const Library = async () => {
 
     const ExerciseData = await getExerciseCard()
     return (
-        <div className='container mx-auto'>
+        <div id='library' className='scroll-mt-24 container mx-auto'>
             <h2 className='font-bold text-4xl my-5'>THE LIBRARY</h2>
             <p className='text-[#A4A5AB] text-xl mb-5'>Twelve lifts covering every major muscle group.</p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
