@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import PlanView from '@/components/PlanView';
 import React from 'react';
+import LoadingSpinner from '@/components/shared/LoadingSpinner';
 
 const getExerciseData = async () => {
     'use cache'
@@ -26,9 +27,7 @@ const MyPlanPage = () => {
             <p className="mt-2 text-lg text-gray-400">Cap of five lifts for today. Finish them, then load more.</p>
             <Suspense
                 fallback={
-                    <p className="mt-8 text-center text-lg text-gray-400">
-                        Loading workouts…
-                    </p>
+                    <LoadingSpinner></LoadingSpinner>
                 }
             >
                 <PlanContent />

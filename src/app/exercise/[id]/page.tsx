@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ExerciseCardType } from "@/types/exercise.type";
 import ExerciseActions from "@/components/shared/ExerciseActions";
+import LoadingSpinner from "@/components/shared/LoadingSpinner";
 
 const getExercises = async () => {
   try {
@@ -114,7 +115,7 @@ export default function ExercisePage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense fallback={<p className="p-10 text-white">Loading...</p>}>
+    <Suspense fallback={<LoadingSpinner></LoadingSpinner>}>
       <ExerciseDetails params={params} />
     </Suspense>
   );
