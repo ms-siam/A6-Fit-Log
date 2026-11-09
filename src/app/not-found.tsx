@@ -9,7 +9,7 @@ const NotFound = () => {
                     <FaDumbbell className="text-7xl text-[#C4F000]" />
                 </div>
             </div>
-            <h1 className="text-4xl font-bold uppercase text-white">404 — Missed that lift</h1>
+            <h1 className="text-4xl font-bold uppercase text-white">404 - Missed that lift</h1>
             <p className="max-w-md text-gray-400">
                 The page you wanted is not in the library. Head back to the floor and pick a workout that exists.
             </p>
