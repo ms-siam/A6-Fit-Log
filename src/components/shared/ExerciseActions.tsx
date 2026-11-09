@@ -4,7 +4,7 @@ import { usePlan } from "@/context/PlanContext";
 import { toast } from "react-toastify";
 
 const ExerciseActions = ({ id }: { id: number }) => {
-    const { planIds, saveIds, addToPlan, toggleSave } = usePlan()
+    const { planIds, saveIds, addToPlan, addToSaved } = usePlan()
 
     const handleAddToPlan = () => {
         if (planIds.includes(id)) {
@@ -20,14 +20,13 @@ const ExerciseActions = ({ id }: { id: number }) => {
     }
 
     const handleSave = () => {
-        if (saveIds.includes(id)) {
-            toggleSave(id)
-            toast.success("Removed from saved")
-            return
-        }
-        toggleSave(id)
-        toast.success("Saved for later")
+    if (saveIds.includes(id)) {
+        toast.error("Already in your saved list")
+        return
     }
+    addToSaved(id)
+    toast.success("Saved for later")
+}
 
     return (
         <>

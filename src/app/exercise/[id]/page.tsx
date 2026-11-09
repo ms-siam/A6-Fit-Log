@@ -115,7 +115,7 @@ export default function ExercisePage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense fallback={<LoadingSpinner></LoadingSpinner>}>
+    <Suspense fallback={<LoadingSpinner label="Loading workouts…"></LoadingSpinner>}>
       <ExerciseDetails params={params} />
     </Suspense>
   );
