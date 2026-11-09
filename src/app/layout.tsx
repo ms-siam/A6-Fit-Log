@@ -12,11 +12,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme='dark'
+      className="h-full"
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <PlanProvider>
           <Navbar></Navbar>
-          {children}
+          <div className="flex-1">{children}</div>
           <Footer></Footer>
           <ToastContainer
             position="top-right"
